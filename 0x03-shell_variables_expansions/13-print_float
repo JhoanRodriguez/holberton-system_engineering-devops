@@ -1,2 +1,2 @@
 #!/bin/bash
-echo NUM=round($NUM, 2)
+echo NUM="round(NUM, 2)"
