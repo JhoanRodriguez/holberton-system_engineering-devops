@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script displays all files in current directory
+# without a number and dash if file starts with it.
+list="$(ls)"
+for x in $list; do
+    echo "$x" | cut -d'-' -f2
+done
