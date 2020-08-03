@@ -1,3 +1,4 @@
+#Creating a file under tmp directory
 file { '/tmp/holberton':
 ensure  => present,
 path    => '/tmp/holberton',
