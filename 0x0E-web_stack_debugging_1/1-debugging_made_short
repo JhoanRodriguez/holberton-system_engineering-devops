@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Replace nginx configuration file with default settings
-cat /etc/nginx/sites-available/default > /etc/nginx/sites-enabled/default
-service nginx restart
-rm /run/nginx.pid
+# Make it sweet and short
+
+sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+sudo pkill -1 -f "/usr/sbin/nginx"
