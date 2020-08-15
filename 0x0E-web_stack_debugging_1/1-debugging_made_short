@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# script to fix and make 0 better
-sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
+# Fix nginx to listen to port 80
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 service nginx start
-pkill -o nginx
+alias curl="curl 0:80; service nginx stop"
