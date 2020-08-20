@@ -38,24 +38,31 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend JhoanRodriguez
+frontend hbtn-lb
+
         bind *:80
+
         reqadd X-Forwarded-Proto:\ http
-        default_backend backendnodes
+
+        default_backend servers
 
 frontend www-https
         bind *:443 ssl crt /etc/haproxy/certs/www.jhoanrodriguez.tech.pem
         reqadd X-Forwarded-Proto:\ https
         acl letsencrypt-acl path_beg /.well-known/acme-challenge/
         use_backend letsencrypt-backend if letsencrypt-acl
-        default_backend backendnodes
+        default_backend servers
 
-backend backendnodes
+
+backend servers
         balance roundrobin
         redirect scheme https if !{ ssl_fc }
+
+        server web-01 35.237.250.41:80
+
+        server web-02 54.226.106.174:80
+
         option httpchk
-        server 1587-web-01 35.237.250.41:80 check
 
 backend letsencrypt-backend
         server letsencrypt 127.0.0.1:54321
-        server 1587-web-02 54.226.106.174:80 check
