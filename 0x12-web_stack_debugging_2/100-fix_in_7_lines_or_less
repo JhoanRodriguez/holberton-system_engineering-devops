@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# script to run nginx as nginx user
+# script to run nginx as nginx with root priv
 pkill -f apache2
 chown nginx:nginx /etc/nginx/nginx.conf
 chmod 700 /etc/nginx/nginx.conf
