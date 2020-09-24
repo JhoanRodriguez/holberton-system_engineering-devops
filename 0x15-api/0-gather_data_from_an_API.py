@@ -7,19 +7,21 @@ accessing a url with employee ID to return information
 
 
 if __name__ == "__main__":
-    """
-    function to get employees todo list
-    progress
-    """
-    ID = int(argv[1])
-    user = requests.get("https://jsonplaceholder.typicode.com/users/{}".
-                        format(ID)).json()
-    todo = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}".
-                        format(ID)).json()
-    tasks = []
-    for task in todo:
-        if task.get('completed') is True:
-            tasks.append(task.get('title'))
-    print("Employee {} is done with tasks({}/{}):".
-          format(user.get('name'), len(tasks), len(todo)), end='\n\t ')
-    print(*tasks, sep="\n\t ")
+
+    API_URL = "https://jsonplaceholder.typicode.com/"
+    people = requests.get(API_URL + "users/" + argv[1])
+    list_tasks = requests.get(API_URL + "todos?userId=" + argv[1])
+    name = people.json().get("name")
+    tasks = len(list_tasks.json())
+    done = 0
+
+    for task in list_tasks.json():
+        if task.get("completed"):
+            done += 1
+
+    print("Employee {} is done with tasks({}/{}):".format(name, done, tasks))
+
+    for task in list_tasks.json():
+        if task.get("completed"):
+            print("\t ", end="")
+            print(task.get("title"))
