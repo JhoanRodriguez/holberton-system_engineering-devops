@@ -12,8 +12,8 @@ if __name__ == '__main__':
     url_todo = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(
         _id)
 
-    req_user = requests.get(users).json()
-    req_todo = requests.get(todo).json()
+    req_user = requests.get(url_users).json()
+    req_todo = requests.get(url_todo).json()
 
     with open('{}.csv'.format(_id), mode='w') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=',',
