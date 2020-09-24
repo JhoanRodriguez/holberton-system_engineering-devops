@@ -1,10 +1,8 @@
 #!/usr/bin/python3
+"""accessing a url with employee ID to return information
+"""
 import requests
 from sys import argv
-"""
-accessing a url with employee ID to return information
-"""
-
 
 if __name__ == "__main__":
 
