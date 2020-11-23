@@ -10,8 +10,6 @@ This repository contains all the work done for the Sysadmin/SRE track at Holbert
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Projects](#projects)
-* [Author](#author)
 
 ## About
 
